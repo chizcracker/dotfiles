@@ -10,7 +10,7 @@ let &t_Co=256
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
-"Run Midje tests 
+"Run Midje tests
 command Midje Eval (require 'midje.repl)(midje.repl/load-facts :all)
 
 "NERDTree
@@ -24,7 +24,6 @@ set nocompatible
 set background=dark
 set mouse=a
 colorscheme solarized
-
 set backspace=indent,eol,start
 set autoindent
 set tabstop=2
