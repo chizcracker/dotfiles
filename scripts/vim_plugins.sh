@@ -5,8 +5,8 @@
 # curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 TDIR=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
-PP='/.vim/bundle'
-mkdir -p $HOME$PP
+PP=$HOME'/.vim/bundle'
+mkdir -p $PP
 
 trap "{ cd - ; rm -rf $TDIR; exit 255; }" SIGINT
 
@@ -19,7 +19,7 @@ git clone git://github.com/tpope/vim-dispatch.git
 git clone git://github.com/tpope/vim-fireplace.git
 git clone git://github.com/tpope/vim-leiningen.git
 git clone git://github.com/tpope/vim-projectionist.git
-mv * $HOME$PP
+mv * $PP
 cd -
 
 rm -rf $TDIR
