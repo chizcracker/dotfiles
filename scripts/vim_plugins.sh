@@ -5,7 +5,7 @@
 # curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 TDIR=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
-PP='/vimrc/bundle'
+PP='/.vimrc/bundle'
 
 trap "{ cd - ; rm -rf $TDIR; exit 255; }" SIGINT
 
