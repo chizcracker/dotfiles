@@ -22,6 +22,7 @@ set nu
 set ruler
 set nocompatible
 set background=dark
+set mouse=a
 colorscheme solarized
 
 set backspace=indent,eol,start
