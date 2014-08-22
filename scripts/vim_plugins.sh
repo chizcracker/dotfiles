@@ -11,14 +11,23 @@ mkdir -p $PP
 trap "{ cd - ; rm -rf $TDIR; exit 255; }" SIGINT
 
 cd $TDIR
-git clone git://github.com/vim-scripts/VimClojure.git
+
+# vim setting
+# color
+git clone https://github.com/altercation/vim-colors-solarized.git
+
+# plugin
 git clone https://github.com/scrooloose/nerdtree.git
 git clone git://github.com/ntpeters/vim-better-whitespace.git
-git clone https://github.com/altercation/vim-colors-solarized.git
+git clone https://github.com/mileszs/ack.vim.git
+
+# clojure
+git clone git://github.com/vim-scripts/VimClojure.git
 git clone git://github.com/tpope/vim-dispatch.git
 git clone git://github.com/tpope/vim-fireplace.git
 git clone git://github.com/tpope/vim-leiningen.git
 git clone git://github.com/tpope/vim-projectionist.git
+
 mv * $PP
 cd -
 
