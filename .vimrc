@@ -40,3 +40,8 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 " Tags
 set tags+=.tags
 set tags+=.gemtags
+
+" SuperTab
+" let g:SuperTabMappingForward = '<c-space>' "(default value: '<tab>')
+" let g:SuperTabMappingBackward = '<s-c-space>' "(default value: '<s-tab>')
+" let g:SuperTabMappingTabLiteral = "(default value: '<c-tab>')
