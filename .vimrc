@@ -36,3 +36,7 @@ set hlsearch
 
 "Python setting
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" Tags
+set tags+=.tags
+set tags+=.gemtags

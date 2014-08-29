@@ -32,5 +32,14 @@ vact(){
 }
 alias dact='deactivate'
 
+# ctags
+git-files() {
+  git ls-tree --full-tree -r --name-only HEAD
+}
+
+re-ctags() {
+  ctags -f .tags -L $(git-files)
+}
+
 # misc aliases
 alias profile='vim ~/.bash_profile'
