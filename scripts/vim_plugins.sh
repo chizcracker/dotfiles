@@ -20,6 +20,7 @@ git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/scrooloose/nerdtree.git
 git clone git://github.com/ntpeters/vim-better-whitespace.git
 git clone https://github.com/mileszs/ack.vim.git
+git clone https://github.com/wesQ3/vim-windowswap.git
 
 # clojure
 git clone git://github.com/vim-scripts/VimClojure.git
