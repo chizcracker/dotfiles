@@ -21,6 +21,17 @@ make_prompt() {
 export PS1=$(make_prompt)
 unset -f make_prompt
 
+## git
+# alias
+alias gco="git checkout"
+alias gs="git status"
+
+# git bash-complete
+# brew install bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+      . `brew --prefix`/etc/bash_completion
+fi
+
 ## virtualenv
 # projects should be git repositories.
 vact(){
@@ -38,8 +49,12 @@ git-files() {
 }
 
 re-ctags() {
-  ctags -f .tags -L $(git-files)
+  if [ -f .tags ] ; then
+    rm .tags
+  fi
+  git-files | xargs ctags -a -f .tags -L
 }
 
 # misc aliases
 alias profile='vim ~/.bash_profile'
+
