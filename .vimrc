@@ -1,6 +1,35 @@
-"Pathogen setting
-execute pathogen#infect()
-Helptags
+set nocompatible
+filetype off    " Required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" ------ plugin ------
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+
+" ruby
+Plugin 'thoughtbot/vim-rspec'
+
+" NodeJS
+Plugin 'geekjuice/vim-mocha'
+
+" clojure
+Plugin 'vim-scripts/VimClojure'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-projectionist'
+
+call vundle#end()
+" ------ plugin ------
+filetype plugin indent on " Required
 
 syntax enable
 filetype plugin indent on
@@ -22,8 +51,9 @@ set nu
 set ruler
 set nocompatible
 set background=dark
-set mouse=a
+"set term=xterm-color
 colorscheme solarized
+
 set backspace=indent,eol,start
 set autoindent
 set tabstop=2
@@ -33,6 +63,8 @@ set laststatus=2
 set encoding=utf-8
 set whichwrap=h,l,[,]
 set hlsearch
+" VI > 7.3
+set clipboard=unnamed
 
 " Trim Whitespace
 map <Leader>w :StripWhitespace<CR>
@@ -40,8 +72,18 @@ map <Leader>w :StripWhitespace<CR>
 " Unhighlight Search
 map <Leader>/ :noh<CR>
 
-"Python setting
+" Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" Ruby
+map <Leader>rdb orequire 'ruby-debug'; debugger<ESC>
+map <Leader>pry orequire 'pry'; binding.pry<ESC>
+
+" ThoughtBot based test runner bindings (vim-rspec, vim-mocha)
+map <Leader>rf :call RunCurrentSpecFile()<CR>
+map <Leader>rl :call RunNearestSpec()<CR>
+map <Leader>rr :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 
 " Tags
 set tags+=.tags
@@ -52,8 +94,6 @@ set tags+=.gemtags
 " let g:SuperTabMappingBackward = '<s-c-space>' "(default value: '<s-tab>')
 " let g:SuperTabMappingTabLiteral = "(default value: '<c-tab>')
 
-" Execute Shell Command
-" :Shell <shell command>
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
   echo a:cmdline
