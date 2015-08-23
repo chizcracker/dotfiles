@@ -63,8 +63,12 @@ set laststatus=2
 set encoding=utf-8
 set whichwrap=h,l,[,]
 set hlsearch
-" VI > 7.3
 set clipboard=unnamed
+
+" temp file dirs
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
 " Trim Whitespace
 map <Leader>w :StripWhitespace<CR>
