@@ -1,38 +1,32 @@
 set nocompatible
-filetype off    " Required
 
-set rtp+=~/.vim/bundle/Vundle.vim
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
 
-" ------ plugin ------
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ervandew/supertab'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'ervandew/supertab'
 
 " ruby
-Plugin 'thoughtbot/vim-rspec'
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 
 " NodeJS
-Plugin 'geekjuice/vim-mocha'
+Plug 'geekjuice/vim-mocha', { 'for': 'javascript' }
 
 " clojure
-Plugin 'vim-scripts/VimClojure'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-leiningen'
-Plugin 'tpope/vim-projectionist'
+Plug 'vim-scripts/VimClojure', { 'for': 'clojure' }
+Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-leiningen', { 'for': 'clojure' }
+Plug 'tpope/vim-projectionist', { 'for': 'clojure' }
 
-call vundle#end()
-" ------ plugin ------
-filetype plugin indent on " Required
+" Initialize plugin system
+call plug#end()
 
 syntax enable
-filetype plugin indent on
 let &t_Co=256
 
 "VimClojure setting
@@ -65,7 +59,7 @@ set whichwrap=h,l,[,]
 set hlsearch
 set clipboard=unnamed
 
-" temp file dirs
+" tmp file directories
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -84,6 +78,7 @@ map <Leader>rdb orequire 'ruby-debug'; debugger<ESC>
 map <Leader>pry orequire 'pry'; binding.pry<ESC>
 
 " ThoughtBot based test runner bindings (vim-rspec, vim-mocha)
+let g:rspec_runner = "os_x_iterm2"
 map <Leader>rf :call RunCurrentSpecFile()<CR>
 map <Leader>rl :call RunNearestSpec()<CR>
 map <Leader>rr :call RunLastSpec()<CR>
