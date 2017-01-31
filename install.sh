@@ -18,6 +18,7 @@ brew install reattach-to-user-namespace
 brew install tmux
 
 echo 'installing vcprompt ... '
+mkdir ~/bin
 curl -sL https://github.com/djl/vcprompt/raw/master/bin/vcprompt > ~/bin/vcprompt
 chmod 755 ~/bin/vcprompt
 
@@ -56,4 +57,19 @@ else
   install_vim
 fi
 
+echo 'creating necessary vim folders ...'
+mkdir ~/.vim/swap
+mkdir ~/.vim/undo
+mkdir ~/.vim/backup
+
+echo 'installing vim-plug ...'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo 'please run :PlugInstall ...'
+echo 'please change Iterm conig for Solarized color profile ...'
+echo 'https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized'
+
 source ~/.bash_profile
+
+echo 'done!!'
