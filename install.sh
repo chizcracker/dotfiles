@@ -36,25 +36,23 @@ cp $DIR/.vimrc ~/
 
 echo 'checking vim compatibility ...'
 
-install_vim() {
-  brew install vim
-  echo "alias vim='/usr/local/bin/vim'" >>~/.bash_profile
-}
-
 has_vim=$(command -v vim >/dev/null)
 if $has_vim; then
   vim_version=$(vim --version | head -1 | cut -d ' ' -f 5)
   has_ruby_support=$(vim --version | grep -c ruby)
+  has_clipboard_support=$(vim --version | grep -c +clipboard)
 
-  if [ ! $(echo "$vim_version >= 7.4" | bc -l) ] && [ ! $has_ruby_support ]; then
-    echo "vim version must be at least 7.4 and must be installed with ruby support"
-    install_vim
+  if [ ! $(echo "$vim_version >= 7.4" | bc -l) ] && [ ! $has_ruby_support ] && [ ! $has_clipboard_support ]; then
+    echo "vim version must be at least 7.4"
+    echo "must be installed with ruby support"
+    echo "must be installed with clipboard support"
+    brew install vim --override-system-vim
   else
     echo "vim already installed."
   fi
 else
   echo "must have vim installed."
-  install_vim
+  brew install vim --override-system-vim
 fi
 
 echo 'creating necessary vim folders ...'
@@ -67,7 +65,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo 'please run :PlugInstall ...'
-echo 'please change Iterm conig for Solarized color profile ...'
+echo 'please change Iterm config for the Solarized color profile ...'
 echo 'https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized'
 
 source ~/.bash_profile
