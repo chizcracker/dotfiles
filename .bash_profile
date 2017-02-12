@@ -24,13 +24,12 @@ make_prompt() {
 export PS1=$(make_prompt)
 unset -f make_prompt
 
-## brew
-# git
-export PATH=/usr/local/bin:$PATH
-
 # git bash-complete
 # brew install bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# tmux
+alias tmux_attach='tmux attach -t'
 
 ## virtual environment
 # projects should be git repositories.
@@ -62,5 +61,6 @@ re-ctags() {
   if [ -f .tags ] ; then
     rm .tags
   fi
-  git-files | xargs ctags -a -f .tags -L
+  #ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./.tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")
+  ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./.tags ./
 }
