@@ -11,11 +11,18 @@ else
   brew update
 fi
 
+brew_install() {
+  if ! brew ls --versions $1 > /dev/null; then
+    brew install $1
+  fi
+}
+
 echo 'installing brew packages ...'
-brew install ack
-brew install ctags
-brew install reattach-to-user-namespace
-brew install tmux
+brew_install ack
+brew_install ctags
+brew_install reattach-to-user-namespace
+brew_install git
+brew_install bash-completion
 
 echo 'installing vcprompt ... '
 mkdir ~/bin

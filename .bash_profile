@@ -27,43 +27,10 @@ unset -f make_prompt
 ## brew
 # git
 export PATH=/usr/local/bin:$PATH
-# rabbitMQ
-export PATH=$PATH:/usr/local/sbin
-alias rabbit_run='rabbitmq-server -detached'
-alias rabbit='rabbitmqctl'
 
 # git bash-complete
 # brew install bash-completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-      . `brew --prefix`/etc/bash_completion
-fi
-
-## JAVA
-# export JAVA_HOME=$(/usr/libexec/java_home)
-
-## HADOOP
-alias start_hadoop='start-dfs.sh && start-yarn.sh'
-alias stop_hadoop='stop-dfs.sh && stop-yarn.sh'
-
-## Flavor_H*_Stack
-alias starth='start_hadoop && start-hbase.sh'
-alias stoph='stop-hbase.sh && stop_hadoop'
-alias restarth='stoph && starth'
-
-
-## MySQL
-#Location for MySQL
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
-export PATH=/usr/local/mysql/bin:$PATH
-
-alias mysql=sudo' /usr/local/mysql/bin/mysql -u root -p'
-alias mysqladmin=sudo' /usr/local/mysql/bin/mysqladmin'
-
-# node npm module path
-export NODE_PATH='/Users/jeungwok/node_modules'
-
-alias jar='java -Dfile.encoding=utf8 sun.tools.jar.Main '
-alias keytool='java -Dfile.encoding=utf8 sun.security.tools.KeyTool '
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 ## virtual environment
 # projects should be git repositories.
