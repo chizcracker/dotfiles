@@ -71,8 +71,10 @@ echo 'installing vim-plug ...'
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo 'please run :PlugInstall ...'
-echo 'please change Iterm config for the Solarized color profile ...'
+echo 'installing vim plugins ...'
+vim +:PlugInstall +qall
+
+echo 'please change Iterm2 config for the Solarized color profile ...'
 echo 'https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized'
 
 source ~/.bash_profile
