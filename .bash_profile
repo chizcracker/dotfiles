@@ -20,7 +20,7 @@ make_prompt() {
 
   local PRMPT_CDIR="$color_white\W"
   local PRMPT_VC=$color_red'$(vcprompt -f '[%b@%r%m%u%a]')\[\033[00m\]$ '
-  echo $PRMT_TIME $PRMT_STAT $PRMT_CDIR $PRMT_VC ''
+  echo $PRMPT_TIME $PRMPT_STAT $PRMPT_CDIR $PRMPT_VC ''
 }
 export PS1=$(make_prompt)
 unset -f make_prompt
