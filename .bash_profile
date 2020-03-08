@@ -9,16 +9,17 @@ export PATH=$HOME/bin:$PATH
 #vcprompt
 #export PS1='\[\e[0;32m\]\u@\h \[\e[0;37m\]\W\[\e[0;31m\] $(vcprompt -f '[%b@%r%m%u%a]')\[\033[00m\]$ '
 make_prompt() {
-  color_green='\[\e[0;32m\]'
-  color_undblu='\[\e[4;34m\]'
-  color_undylw='\[\e[4;33m\]'
-  color_red='\[\e[01;31m\]'
-  color_white='\[\e[0;37m\]'
+  local color_green='\[\e[0;32m\]'
+  local color_undblu='\[\e[4;34m\]'
+  local color_undylw='\[\e[4;33m\]'
+  local color_red='\[\e[01;31m\]'
+  local color_white='\[\e[0;37m\]'
 
-  PRMT_TIME="$color_green[\t]"
-  PRMT_STAT="\`if [ \$? = 0 ]; then echo -e '$color_undblu(°))<<'; else echo -e '$color_undylw(⁎˃ᆺ˂)'; fi\`"
-  PRMT_CDIR="$color_white\W"
-  PRMT_VC=$color_red'$(vcprompt -f '[%b@%r%m%u%a]')\[\033[00m\]$ '
+  local PRMPT_TIME="$color_green[\t]"
+  local PRMPT_STAT="\`if [ \$? = 0 ]; then echo -e '$color_undblu(°))<<'; else echo -e '$color_undylw(⁎˃ᆺ˂)'; fi\`"
+
+  local PRMPT_CDIR="$color_white\W"
+  local PRMPT_VC=$color_red'$(vcprompt -f '[%b@%r%m%u%a]')\[\033[00m\]$ '
   echo $PRMT_TIME $PRMT_STAT $PRMT_CDIR $PRMT_VC ''
 }
 export PS1=$(make_prompt)
@@ -30,27 +31,6 @@ unset -f make_prompt
 
 # tmux
 alias tmux_attach='tmux attach -t'
-
-## virtual environment
-# projects should be git repositories.
-vact(){
-  P=$(git rev-parse --show-toplevel)
-  echo "applying virtual environment... ($P)"
-  cd $P
-
-  if [ $1 = "python" ]
-  then
-    source bin/activate
-    cd - >/dev/null
-    alias dact='deactivate'
-  elif [ $1 = "node" ]
-  then
-    source env/bin/activate
-    export PATH=$NPM_CONFIG_PREFIX/../node_modules/.bin:$PATH
-    cd - >/dev/null
-    alias dact='deactivate_node'
-  fi
-}
 
 # ctags
 git-files() {
