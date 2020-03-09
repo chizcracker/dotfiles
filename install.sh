@@ -29,11 +29,12 @@ mkdir ~/bin
 curl -sL https://github.com/djl/vcprompt/raw/master/bin/vcprompt > ~/bin/vcprompt
 chmod 755 ~/bin/vcprompt
 
+timestamp=$(date +%s)
 echo 'backing up current config files ...'
 mkdir -p ~/settings/backup
-cp ~/.bash_profile ~/settings/backup/
-cp ~/.tmux.conf ~/settings/backup/
-cp ~/.vimrc ~/settings/backup/
+cp ~/.bash_profile ~/settings/backup/.bash_profile_$timestamp
+cp ~/.tmux.conf ~/settings/backup/.tmux.conf_$timestamp
+cp ~/.vimrc ~/settings/backup/.vimrc_$timestamp
 
 echo 'copying config files ...'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -77,6 +78,12 @@ vim +:PlugInstall +qall
 echo 'please change Iterm2 config for the Solarized color profile ...'
 echo 'https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized'
 
+echo 'installing python envs'
+brew_install pyenv
+echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+
+brew_install pyenv-virtualenv
+echo 'if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi' >> ~/.bash_profile
 source ~/.bash_profile
 
 echo 'done!!'

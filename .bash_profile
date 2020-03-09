@@ -32,12 +32,12 @@ unset -f make_prompt
 # tmux
 alias tmux_attach='tmux attach -t'
 
-# ctags
-git-files() {
+git_files() {
   git ls-tree --full-tree -r --name-only HEAD
 }
 
-re-ctags() {
+# ctags
+re_ctags() {
   if [ -f .tags ] ; then
     rm .tags
   fi
